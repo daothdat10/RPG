@@ -67,7 +67,10 @@ public class Enemy : MonoBehaviour
             agent.SetDestination(player.transform.position);    
         }
         newDestinationCD -= Time.deltaTime;
-        transform.LookAt(player.transform);
+        if (GameObject.FindGameObjectWithTag("Player") != null)
+        {
+            transform.LookAt(player.transform);
+        }
     }
 
     public void TakeDamage(float damageAmount)

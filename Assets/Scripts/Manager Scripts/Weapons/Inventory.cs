@@ -73,7 +73,7 @@ public class Inventory : MonoBehaviour
 
         foreach(InventorySlot slot in mSlots)
         {
-            if (slot.Remove((InventoryItemBase)item))
+            if (slot.Remove(item))
             {
                 if(ItemRemoved != null)
                 {
@@ -90,5 +90,6 @@ public class Inventory : MonoBehaviour
         {
             ItemUsed(this, new InventoryEventArgs(item));
         }
+        item.OnUse();
     }
 }

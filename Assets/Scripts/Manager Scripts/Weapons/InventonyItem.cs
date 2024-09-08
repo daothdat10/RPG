@@ -8,7 +8,7 @@ public interface IIventoryItem
 {
     string Name { get; }
     Sprite Image { get; }
-    public InventorySlot Slot { get; set; }
+    InventorySlot Slot { get; set; }
 
     void Onpickup();
 

@@ -5,7 +5,8 @@ using UnityEngine;
 public class SpawnEnemy : MonoBehaviour
 {
     [SerializeField] GameObject enemyList;
-   
+    [SerializeField] GameObject Coins;
+
 
     [SerializeField] float maxX;
     [SerializeField] float maxZ;
@@ -23,6 +24,7 @@ public class SpawnEnemy : MonoBehaviour
     void Start()
     {
         spawm(round);
+        StartCoroutine(SpawnCoin());
     }
 
     // Update is called once per frame
@@ -46,6 +48,7 @@ public class SpawnEnemy : MonoBehaviour
 
         GameObject toSpawn;
 
+        
         if(round == 1)
         {
             Debug.Log("The Enemy has appeared");
@@ -62,5 +65,11 @@ public class SpawnEnemy : MonoBehaviour
         }
         var boss =  Instantiate(toSpawn, transform.position + new Vector3(randomX,4f, randomZ), transform.rotation);
         
+    }
+
+    IEnumerator SpawnCoin()
+    {
+        Instantiate(Coins, transform.position, transform.rotation);
+        yield return new WaitForSeconds(2);
     }
 }

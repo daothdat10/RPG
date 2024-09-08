@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 public class HUD : MonoBehaviour
@@ -24,7 +25,9 @@ public class HUD : MonoBehaviour
             index++;
             //Border Image
             Transform imageTransform = slot.GetChild(0).GetChild(0);
+            Transform textTransform = slot.GetChild(0).GetChild(1);
             Image image = imageTransform.GetComponent<Image>();
+            TextMeshProUGUI txtcount = textTransform.GetComponent<TextMeshProUGUI>();
             ItemDragHandler itemDragHandler = imageTransform.GetComponent<ItemDragHandler>();
 
             //We found the empty slot
@@ -35,7 +38,12 @@ public class HUD : MonoBehaviour
                 image.sprite = e.Item.Image;
 
                 int itemCount = e.Item.Slot.Count;
-                
+                if (itemCount > 1)
+                {
+                    txtcount.text = itemCount.ToString();
+                }
+                else
+                    txtcount.text = " ";
 
                 itemDragHandler.Item = e.Item;
 
@@ -56,6 +64,8 @@ public class HUD : MonoBehaviour
         {
             index++;
             Transform imageTransform = slot.GetChild(0).GetChild(0);
+            Transform textTransform = slot.GetChild(0).GetChild(1);
+            TextMeshProUGUI txtcount = textTransform.GetComponent<TextMeshProUGUI>();
             Image image = imageTransform.GetComponent<Image>();
             ItemDragHandler itemDragHandler = imageTransform.GetComponent<ItemDragHandler>();
 
@@ -67,6 +77,13 @@ public class HUD : MonoBehaviour
             {
                 int itemCount = e.Item.Slot.Count;
                 itemDragHandler.Item = e.Item.Slot.FirstItem;
+
+                if (itemCount < 2)
+                {
+                    txtcount.text = " ";
+                }
+                else
+                    txtcount.text = itemCount.ToString();
                 if (itemCount == 0)
                 {
                     image.enabled = false;

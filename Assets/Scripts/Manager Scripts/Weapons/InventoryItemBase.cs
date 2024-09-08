@@ -7,6 +7,7 @@ using static UnityEditor.Progress;
 
 public class InventoryItemBase : MonoBehaviour, IIventoryItem
 {
+    
     public virtual string Name
     {
         get

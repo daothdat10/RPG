@@ -9,6 +9,16 @@ public class InventorySlot {
 
     private int mId = 0;
 
+    public bool isEmpty
+    {
+        get { return Count == 0; }
+    }
+    public int Count
+    {
+
+        get { return mItemStack.Count; }
+    }
+
     public InventorySlot(int id)
     {
         mId = id;
@@ -21,13 +31,13 @@ public class InventorySlot {
         mItemStack.Push(item);
     }
 
-    public InventoryItemBase FirstItem {
+    public IIventoryItem FirstItem {
         get
         {
             if(isEmpty)
                    return null;
 
-            return (InventoryItemBase)mItemStack.Peek();
+            return mItemStack.Peek();
         }
     }
 
@@ -36,7 +46,7 @@ public class InventorySlot {
         if (isEmpty)
             return false;
 
-        InventoryItemBase first = (InventoryItemBase)mItemStack.Peek();
+        IIventoryItem first = mItemStack.Peek();
 
         if(first.Name == item.Name)
             return true;
@@ -44,24 +54,16 @@ public class InventorySlot {
         return false;
     }
 
-    public bool isEmpty
-    {
-        get { return Count == 0; }
-    }
-    public int Count
-    {
+  
 
-        get { return mItemStack.Count; }
-    }
-
-    public bool Remove(InventoryItemBase item)
+    public bool Remove(IIventoryItem item)
     {
         if (isEmpty)
         {
             return false;
         }
 
-        InventoryItemBase first = (InventoryItemBase)mItemStack.Peek();
+        IIventoryItem first = mItemStack.Peek();
         if(first.Name == item.Name)
         {
             mItemStack.Pop();
@@ -69,10 +71,5 @@ public class InventorySlot {
         }
         return false;
 
-    }
-
-    public static implicit operator InventorySlot(InvenStorySlot v)
-    {
-        throw new NotImplementedException();
     }
 }

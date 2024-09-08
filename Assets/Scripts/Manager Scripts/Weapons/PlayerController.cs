@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 
     public HUD Hud;
 
+    public pau_con_res playerCoins;
+
     private void Start()
     {
         inventory.ItemUsed += Inventory_ItemUsed;
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour
         goItem.SetActive(true);
 
         goItem.transform.parent =null;
+
     }
     private void Inventory_ItemUsed(object sender, InventoryEventArgs e)
     {
@@ -45,7 +48,16 @@ public class PlayerController : MonoBehaviour
 
         if(item != null) 
         {
-            inventory.AddItem(item);        
+            inventory.AddItem(item);
+            hit.collider.gameObject.SetActive(false);
+        }
+
+       if(hit.collider.tag == "Coin")
+        {
+            playerCoins.CoinColected();
+           
         }
     }
+
+    
 }
