@@ -3,6 +3,7 @@
 public class GameData 
 {
     public int totalCoins;
+    
 
     public bool[] charUnlocked;
 

@@ -9,7 +9,9 @@ public class Game_Manager : MonoBehaviour
 
     private void Start()
     {
-        index = PlayerPrefs.GetInt("carIndex");
-        GameObject car = Instantiate(player[index],Vector3.zero,Quaternion.identity);
+        index = PlayerPrefs.GetInt("playerIndex");
+        GameObject players = Instantiate(player[index],new Vector3(30.36336f, 3.245409f, 68.04374f),Quaternion.identity);
+
+       
     }
 }

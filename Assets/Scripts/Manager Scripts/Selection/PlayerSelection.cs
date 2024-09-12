@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,18 +7,20 @@ using UnityEngine.UI;
 
 public class PlayerSelection : MonoBehaviour
 {
-    public GameObject[] cars;
+    public GameObject[] players;
 
     public Button next;
     public Button prev;
+
+    
     int index;
     void Start()
     {
-        index = PlayerPrefs.GetInt("carIndex");
-        for(int i=0; i<cars.Length; i++)
+        index = PlayerPrefs.GetInt("playerIndex");
+        for(int i=0; i< players.Length; i++)
         {
-            cars[i].SetActive(false);
-            cars[index].SetActive(true);
+            players[i].SetActive(false);
+            players[index].SetActive(true);
         }
     }
 
@@ -44,24 +47,24 @@ public class PlayerSelection : MonoBehaviour
     public void Next()
     {
         index++;
-        for(int i=0;i<cars.Length;i++)
+        for(int i=0;i< players.Length;i++)
         {
-            cars[i].SetActive(false) ;
-            cars[index].SetActive(true) ;
+            players[i].SetActive(false) ;
+            players[index].SetActive(true) ;
         }
-        PlayerPrefs.SetInt("carIndex",index);
+        PlayerPrefs.SetInt("playerIndex",index);
         PlayerPrefs.Save();
     }
 
     public void Prev() {
         index--;
 
-        for(int i = 0; i < cars.Length; i++)
+        for(int i = 0; i < players.Length; i++)
         {
-            cars[i].SetActive(false) ;
-            cars[index].SetActive(true) ;
+            players[i].SetActive(false) ;
+            players[index].SetActive(true) ;
         }
-        PlayerPrefs.SetInt("carIndex", index);
+        PlayerPrefs.SetInt("playerIndex", index);
 
         PlayerPrefs.Save();
         

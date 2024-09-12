@@ -5,6 +5,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 public static class SystemSave
 { 
+    
     public static void Save(GameData data)
     {
         //xác định nơi lưu tệp
@@ -15,7 +16,7 @@ public static class SystemSave
 
         //luồng tep de luu du lieu
         FileStream fs = new FileStream(GetPath(), FileMode.Create);
-
+        
         formatter.Serialize(fs, data);
 
         fs.Close();
@@ -29,6 +30,7 @@ public static class SystemSave
         {
             GameData emptyData = new GameData();
             Save(emptyData);
+            
             return emptyData;
         }
 
@@ -46,4 +48,7 @@ public static class SystemSave
     {
         return Application.persistentDataPath + "/data.qnd"; 
     }
+
+    
+
 }
